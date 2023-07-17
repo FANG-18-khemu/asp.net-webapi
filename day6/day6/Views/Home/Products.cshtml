@@ -1,0 +1,48 @@
+﻿
+
+
+<h1 style="align-content:center">All the products</h1>
+<br/>
+<br />
+<hr />
+<br />
+<br />
+
+<div class="border-1 table">
+    
+</div>
+
+<script>
+    function getProducts(){
+        let url = "https://fakestoreapi.com/products";
+
+        fetch(url).then(res => res.json()).then(result =>{
+            let ele =document.getElementsByClassName("table");
+            
+            
+            for(let i =0;i<result.length;i++){
+                var val = document.createElement("div");
+                    val.innerHTML=`
+                            <h1 style="color:darkorchid">Product Title :- ${result[i].title}</h1>
+                    <br/>
+                        <img src=${result[i].image} width="500" height="600">
+                             <br/>
+                            <h2>Product Description :- ${result[i].description.slice(0, 20)} ...
+                             <br/>
+                                <h3>Product Category :- ${result[i].category}</h3>
+                                     <br/>
+                                    <h2 style="color:brown" >Price :- ${result[i].price}</h2>
+                                     <br/>
+                                     <hr/>
+                                
+                                
+                `;
+                
+               
+                ele[0].append(val);
+            }
+        });
+    }
+</script>
+
+<button style="color:darkorchid" class="btn-primary btn" onclick="getProducts()">Show Button</button>
